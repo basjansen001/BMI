@@ -80,16 +80,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSou
     func textFieldDidEndEditing(textField: UITextField) {
 	// Dit is een closure. Hij convert de string naar een number anders return die nil als dat niet lukt.
 	let conv = {
-		NSNumberFormatter().numberFromString($0)?.doubleValue
+	    NSNumberFormatter().numberFromString($0)?.doubleValue
 	}
     
 	switch textField {
 	case self.weightTextField:
-		self.weight = conv(textField.text)
+	    self.weight = conv(textField.text)
 	case self.heightTextField:
-		self.height = conv(textField.text)
+	    self.height = conv(textField.text)
 	default:
-		println("There went something horribly wrong")
+	    println("There went something horribly wrong")
 	}
 
       updateUI()
@@ -108,35 +108,35 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSou
      func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
          switch pickerView {
 	 case self.heightPickerView:
-		return listOfHeightsInMeters.count
+	    return listOfHeightsInMeters.count
 	 case self.weightPickerView:
-		return listOfWeightsInKg.count
+	    return listOfWeightsInKg.count
 	 default:
-		return 0
+	    return 0
 	 }
      }
   
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
 	switch pickerView {
 	case self.heightPickerView:
-		return String(format: "%4.2f", listOfHeightsInMeters[row])
+	    return String(format: "%4.2f", listOfHeightsInMeters[row])
 	case self.weightPickerView:
-		return String(format: "%4.2f", listOfWeightsInKg[row])
+	    return String(format: "%4.2f", listOfWeightsInKg[row])
 	default:
-		return ""
+	    return ""
 	}
     }
   
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 	switch pickerView {
 	case self.heightPickerView:
-		let height: Double = self.listOfHeightsInMeters[row]
-		self.height = height
+	    let height: Double = self.listOfHeightsInMeters[row]
+	    self.height = height
 	case self.weightPickerView:
-		let weight: Double = self.listOfWeightsInKg[row]
-		self.weight = weight
+	    let weight: Double = self.listOfWeightsInKg[row]
+	    self.weight = weight
 	default:
-		println("Error")
+            println("Error")
 	}
     
 	updateUI()
